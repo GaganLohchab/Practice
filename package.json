@@ -1,0 +1,80 @@
+{
+  "name": "vshunch",
+  "displayName": "VSHunch",
+  "description": "An app that mathches programmers by allowing then to swipe at code.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vshunch-sidebar-view",
+          "title": "VSHunch",
+          "icon": "./media/heart.svg"
+        }
+      ]
+    },
+    "views": {
+      "vshunch-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "vshunch-sidebar-view",
+          "name": "VSHunch",
+          "icon": "./media/heart.svg",
+          "contextualTitle": "VSHunch"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vshunch.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "vshunch.authenticate",
+        "title": "Authenticate",
+        "category": "VSinder"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  }
+}
